@@ -2,9 +2,11 @@
     "name": "OneNET",
     "version": "0.0.0",
     "description": "OneNET iOT by XMU",
+    "license": "MIT",
     "dependencies": {
         "core": "*",
-        "radio": "*"
+        "radio": "*",
+        "microphone": "*"
     },
     "files": [
         "README.md",
@@ -14,6 +16,5 @@
         "test.ts"
     ],
     "public": false,
-    "license": "MIT",
     "preferredEditor": "tsprj"
 }
