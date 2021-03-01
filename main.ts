@@ -14,63 +14,20 @@ namespace OneNET {
     let receive_id: string;
     let receive_value: string;
     let is_mqtt_conneted = false;
-
+    let is_wifi_conneted = false;
+    let is_uart_inited = false;
+    
     let wifi_conneted: () => void = null;
     let mqtt_conneted: () => void = null;
     let mqtt_received: () => void = null;
 
-    /**
-     * 连接WIFI
-     * @param ssid ; eg: "WIFI"
-     * @param pass ; eg: "12345678"
-    */
-    //% block="连接WIFI 名称：$ssid 密码：$pass"
-    //% subcategory="联网"
-    export function WIFI_connect(ssid: string, pass: string): void {
-
-        serial.redirect(
-            SerialPin.P13,
-            SerialPin.P14,
-            BaudRate.BaudRate115200
-        )
-        basic.pause(100)
-
-        let cmd: string = "AT+XMU_WIFI=" + ssid + ',' + pass + '\n'
-        serial.writeString(cmd)
-        basic.pause(50)
-    }
-
-    /**
-     * 连接OneNET
-     * @param product_id ; eg: "123456"
-     * @param machine_id ; eg: "123456789"
-     * @param pass ; eg: "1234"
-    */
-    //% block="连接OneNET 产品ID：$product_id 设备ID：$machine_id 鉴权信息：$pass"
-    //% subcategory="联网"
-    export function OneNET_connect(product_id: string, machine_id: string, pass: string): void {
-        let cmd: string = "AT+ONENET=" + product_id + ',' + machine_id + ',' + pass + '\n'
-        is_mqtt_conneted = false
-        serial.writeString(cmd)
-        basic.pause(50)
-    }
-    /**
-     * 向OneNET发送信息
-     * @param data_id ; eg: "temp"
-     * @param data_value ; eg: "28.5"
-    */
-    //% block="向OneNET发送信息 数据流名称：$data_id 内容：$data_value"
-    //% subcategory="联网"
-    export function OneNET_send(data_id: string, data_value: string): void {
-        let cmd: string = "AT+ON_SEND=" + data_id + ',' + data_value + '\n'
-        serial.writeString(cmd)
-        basic.pause(50)
-    }
+    
 
     serial.onDataReceived('\n', function () {
         serial_read = serial.readString()
         if (serial_read.includes("AT")) {
             if (serial_read.includes("XMU_WIFI") && serial_read.includes("OK")) {
+                is_wifi_conneted = true
                 if (wifi_conneted) wifi_conneted()
             }
             else if (serial_read.includes("ONENET") && serial_read.includes("OK")) {
@@ -92,42 +49,6 @@ namespace OneNET {
             }
         }
     })
-
-    /**
-     * WIFI连接成功
-     * @param handler WIFI connected callback
-    */
-    //% block="WIFI连接成功"
-    //% subcategory="联网"
-    export function on_wifi_connected(handler: () => void): void {
-        wifi_conneted = handler;
-    }
-
-    /**
-     * OneNET连接成功
-     * @param handler MQTT connected callback
-    */
-    //% block="OneNET连接成功"
-    //% subcategory="联网"
-    export function on_mqtt_connected(handler: () => void): void {
-        mqtt_conneted = handler;
-    }
-
-    /**
-     * On 收到OneNET的命令
-     * @param handler MQTT receiveed callback
-    */
-    //% block="当收到命令时"
-    //% subcategory="联网"
-    export function on_mqtt_receiveed(handler: () => void): void {
-        mqtt_received = handler;
-    }
-
-    //% block="收到的命令"
-    //% subcategory="联网"
-    export function get_value(): string {
-        return receive_value;
-    }
 
     //% block="连接到服务器成功"
     //% subcategory="联网"
@@ -156,6 +77,169 @@ namespace OneNET {
     //% subcategory="联网"
     export function OneNET_subscribe(data_id: string): void {
         let cmd: string = "AT+SUBSCRIBE=" + data_id + '\n'
+        serial.writeString(cmd)
+        basic.pause(50)
+    }
+
+    /**
+     * On 收到OneNET的命令
+     * @param handler MQTT receiveed callback
+    */
+    //% block="当收到命令时"
+    //% subcategory="联网"
+    export function on_mqtt_receiveed(handler: () => void): void {
+        mqtt_received = handler;
+    }
+    
+    /**
+     * OneNET连接成功
+     * @param handler MQTT connected callback
+    */
+    //% block="OneNET连接成功"
+    //% subcategory="联网"
+    export function on_mqtt_connected(handler: () => void): void {
+        mqtt_conneted = handler;
+    }
+    
+    /**
+     * WIFI连接成功
+     * @param handler WIFI connected callback
+    */
+    //% block="WIFI连接成功"
+    //% subcategory="联网"
+    export function on_wifi_connected(handler: () => void): void {
+        wifi_conneted = handler;
+    }
+
+    //% block="收到的命令"
+    //% subcategory="联网"
+    export function get_value(): string {
+        return receive_value;
+    }
+    /**
+     * 向OneNET发送信息
+     * @param data_id ; eg: "temp"
+     * @param data_value ; eg: "28.5"
+    */
+    //% block="向OneNET发送信息 数据流名称：$data_id 内容：$data_value"
+    //% subcategory="联网"
+    export function OneNET_send(data_id: string, data_value: string): void {
+        let cmd: string = "AT+ON_SEND=" + data_id + ',' + data_value + '\n'
+        serial.writeString(cmd)
+        basic.pause(50)
+    }
+    /**
+     * 连接OneNET
+     * @param product_id ; eg: "123456"
+     * @param machine_id ; eg: "123456789"
+     * @param pass ; eg: "1234"
+    */
+    //% block="连接OneNET 产品ID：$product_id 设备ID：$machine_id 鉴权信息：$pass"
+    //% subcategory="联网"
+    export function OneNET_connect(product_id: string, machine_id: string, pass: string): void {
+        is_mqtt_conneted = false
+
+        let cmd: string = "AT+ONENET=" + product_id + ',' + machine_id + ',' + pass + '\n'
+    
+        while(is_mqtt_conneted==false){
+            serial.writeString(cmd)
+            let start_time = control.millis()
+            while(control.millis() - start_time < 5000){
+                if(is_mqtt_conneted){
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * 连接WIFI
+     * @param ssid ; eg: "WIFI"
+     * @param pass ; eg: "12345678"
+    */
+    //% block="连接WIFI 名称：$ssid 密码：$pass"
+    //% subcategory="联网"
+    export function WIFI_connect(ssid: string, pass: string): void {
+        is_wifi_conneted = false
+        
+        serial.redirect(
+            SerialPin.P13,
+            SerialPin.P14,
+            BaudRate.BaudRate115200
+        )
+        basic.pause(100)
+        is_uart_inited = true
+        let cmd: string = "AT+XMU_WIFI=" + ssid + ',' + pass + '\n'
+        while(is_wifi_conneted==false){
+            serial.writeString(cmd)
+            let start_time = control.millis()
+            while(control.millis() - start_time < 5000){
+                if(is_wifi_conneted){
+                    break;
+                }
+            }
+        }
+    }
+
+    /**
+     * 显示数字
+     * @param x ; eg: 0
+     * @param y ; eg: 0
+     * @param number ; eg: 666
+    */
+    //% block="在屏幕的位置第 $x 行第 $y 列上显示数字: $number"
+    //% subcategory="显示"
+    export function lcd_display_number(x: number, y: number, number: number): void {
+        let cmd: string = "AT+DRAW=" + convertToText(x) + ',' + convertToText(y+1) + ',' + convertToText(number) + '\n'
+        if(is_uart_inited == false){
+            serial.redirect(
+                SerialPin.P13,
+                SerialPin.P14,
+                BaudRate.BaudRate115200
+            )
+            basic.pause(100)
+            is_uart_inited = true
+        }
+        serial.writeString(cmd)
+        basic.pause(50)
+    }
+
+    /**
+     * 显示文本
+     * @param x ; eg: 0
+     * @param y ; eg: 0
+     * @param string ; eg: "hello world"
+    */
+    //% block="在屏幕的位置第 $x 行第 $y 列上显示文本: $string"
+    //% subcategory="显示"
+    export function lcd_display_string(x: number, y: number, string: string): void {
+        let cmd: string = "AT+DRAW=" + convertToText(x) + ',' + convertToText(y+1) + ',' + string + '\n'
+        if(is_uart_inited == false){
+            serial.redirect(
+                SerialPin.P13,
+                SerialPin.P14,
+                BaudRate.BaudRate115200
+            )
+            basic.pause(100)
+            is_uart_inited = true
+        }
+        serial.writeString(cmd)
+        basic.pause(50)
+    }
+
+    //% block="清除显示"
+    //% subcategory="显示"
+    export function lcd_clear(): void {
+        let cmd: string = "AT+DRAW=0,1,.Clear.\n"
+        if(is_uart_inited == false){
+            serial.redirect(
+                SerialPin.P13,
+                SerialPin.P14,
+                BaudRate.BaudRate115200
+            )
+            basic.pause(100)
+            is_uart_inited = true
+        }
         serial.writeString(cmd)
         basic.pause(50)
     }
