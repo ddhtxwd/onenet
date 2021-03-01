@@ -28,7 +28,7 @@ namespace OneNET {
         if (serial_read.includes("AT")) {
             if (serial_read.includes("XMU_WIFI") && serial_read.includes("OK")) {
                 is_wifi_conneted = true
-                if (wifi_conneted) wifi_conneted()
+                //if (wifi_conneted) wifi_conneted()
             }
             else if (serial_read.includes("ONENET") && serial_read.includes("OK")) {
                 is_mqtt_conneted = true
@@ -184,6 +184,7 @@ namespace OneNET {
             while(control.millis() - start_time < 5000){
                 basic.pause(100)
                 if(is_wifi_conneted){
+                    if (wifi_conneted) wifi_conneted()
                     break;
                 }
             }
