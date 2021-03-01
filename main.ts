@@ -140,16 +140,18 @@ namespace OneNET {
         is_mqtt_conneted = false
 
         let cmd: string = "AT+ONENET=" + product_id + ',' + machine_id + ',' + pass + '\n'
-    
+        basic.pause(100)
         while(is_mqtt_conneted==false){
             serial.writeString(cmd)
             let start_time = control.millis()
             while(control.millis() - start_time < 5000){
+                basic.pause(100)
                 if(is_mqtt_conneted){
                     break;
                 }
             }
         }
+        basic.pause(100)
     }
 
     /**
@@ -174,11 +176,13 @@ namespace OneNET {
             serial.writeString(cmd)
             let start_time = control.millis()
             while(control.millis() - start_time < 5000){
+                basic.pause(100)
                 if(is_wifi_conneted){
                     break;
                 }
             }
         }
+        basic.pause(100)
     }
 
     /**
