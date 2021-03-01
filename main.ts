@@ -145,13 +145,12 @@ namespace OneNET {
             serial.writeString(cmd)
             let start_time = control.millis()
             while(control.millis() - start_time < 5000){
-                basic.pause(100)
+                basic.pause(10)
                 if(is_mqtt_conneted){
                     break;
                 }
             }
         }
-        basic.pause(100)
     }
 
     /**
