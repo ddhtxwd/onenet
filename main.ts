@@ -32,7 +32,7 @@ namespace OneNET {
             }
             else if (serial_read.includes("ONENET") && serial_read.includes("OK")) {
                 is_mqtt_conneted = true
-                if (mqtt_conneted) mqtt_conneted()
+                //if (mqtt_conneted) mqtt_conneted()
             }
             else if (serial_read.includes("RECEIVE")) {
                 let start_index = 11
@@ -64,6 +64,9 @@ namespace OneNET {
     //% block="向另一个设备发送信息 话题名称：$data_id 内容：$data_value"
     //% subcategory="联网"
     export function OneNET_publish(data_id: string, data_value: string): void {
+
+        if(is_mqtt_conneted==false)return;
+
         let cmd: string = "AT+PUBLISH=" + data_id + ',' + data_value + '\n'
         serial.writeString(cmd)
         basic.pause(50)
@@ -76,6 +79,8 @@ namespace OneNET {
     //% block="开启接收另一个设备的信息 话题名称：$data_id"
     //% subcategory="联网"
     export function OneNET_subscribe(data_id: string): void {
+        if(is_mqtt_conneted==false)return;
+
         let cmd: string = "AT+SUBSCRIBE=" + data_id + '\n'
         serial.writeString(cmd)
         basic.pause(50)
@@ -124,6 +129,7 @@ namespace OneNET {
     //% block="向OneNET发送信息 数据流名称：$data_id 内容：$data_value"
     //% subcategory="联网"
     export function OneNET_send(data_id: string, data_value: string): void {
+        if(is_mqtt_conneted==false)return;
         let cmd: string = "AT+ON_SEND=" + data_id + ',' + data_value + '\n'
         serial.writeString(cmd)
         basic.pause(50)
@@ -147,6 +153,7 @@ namespace OneNET {
             while(control.millis() - start_time < 5000){
                 basic.pause(10)
                 if(is_mqtt_conneted){
+                    if (mqtt_conneted) mqtt_conneted()
                     break;
                 }
             }
