@@ -69,7 +69,7 @@ namespace OneNET {
 
         let cmd: string = "AT+PUBLISH=" + data_id + ',' + data_value + '\n'
         serial.writeString(cmd)
-        basic.pause(50)
+        basic.pause(100)
     }
 	
 	/**
@@ -83,7 +83,7 @@ namespace OneNET {
 
         let cmd: string = "AT+SUBSCRIBE=" + data_id + '\n'
         serial.writeString(cmd)
-        basic.pause(50)
+        basic.pause(100)
     }
 
     /**
@@ -132,7 +132,7 @@ namespace OneNET {
         if(is_mqtt_conneted==false)return;
         let cmd: string = "AT+ON_SEND=" + data_id + ',' + data_value + '\n'
         serial.writeString(cmd)
-        basic.pause(50)
+        basic.pause(100)
     }
     /**
      * 连接OneNET
@@ -212,7 +212,7 @@ namespace OneNET {
             is_uart_inited = true
         }
         serial.writeString(cmd)
-        basic.pause(50)
+        basic.pause(100)
     }
 
     /**
@@ -235,7 +235,7 @@ namespace OneNET {
             is_uart_inited = true
         }
         serial.writeString(cmd)
-        basic.pause(50)
+        basic.pause(100)
     }
 
     //% block="清除显示"
@@ -252,7 +252,7 @@ namespace OneNET {
             is_uart_inited = true
         }
         serial.writeString(cmd)
-        basic.pause(50)
+        basic.pause(200)
     }
 
     enum SonicPingUnit {
