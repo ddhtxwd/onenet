@@ -7,6 +7,16 @@
 /**
  * 自定义图形块
  */
+ 
+enum SonicPingUnit {
+	//% block="厘米"
+	Centimeters,
+	//% block="微秒"
+	MicroSeconds,
+	//% block="英寸"
+	Inches
+}
+ 
 //% weight=100 color=#0fbc11 icon="\uf1eb"
 namespace OneNET {
 
@@ -255,14 +265,7 @@ namespace OneNET {
         basic.pause(200)
     }
 
-    enum SonicPingUnit {
-        //% block="厘米"
-        Centimeters,
-        //% block="微秒"
-        MicroSeconds,
-        //% block="英寸"
-        Inches
-    }
+    
 
     /**
      * Send a ping and get the echo time (in microseconds) as a result
