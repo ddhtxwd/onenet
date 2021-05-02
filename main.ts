@@ -208,7 +208,7 @@ namespace OneNET {
      * @param y ; eg: 0
      * @param number ; eg: 666
     */
-    //% block="在屏幕的位置第 $x 行第 $y 列上显示数字: $number"
+    //% block="在屏幕的位置第 $y 行第 $x 列上显示数字: $number"
     //% subcategory="显示"
     export function lcd_display_number(x: number, y: number, number: number): void {
         let cmd: string = "AT+DRAW=" + convertToText(x) + ',' + convertToText(y+1) + ',' + convertToText(number) + '\n'
@@ -231,7 +231,7 @@ namespace OneNET {
      * @param y ; eg: 0
      * @param string ; eg: "hello world"
     */
-    //% block="在屏幕的位置第 $x 行第 $y 列上显示文本: $string"
+    //% block="在屏幕的位置第 $y 行第 $x 列上显示文本: $string"
     //% subcategory="显示"
     export function lcd_display_string(x: number, y: number, string: string): void {
         let cmd: string = "AT+DRAW=" + convertToText(x) + ',' + convertToText(y+1) + ',' + string + '\n'
