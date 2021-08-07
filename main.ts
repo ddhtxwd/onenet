@@ -1122,7 +1122,7 @@ namespace OneNET {
 /**
      * 循迹传感器
      */
-    //% blockId=sensor_tracking block="sensor_tracking pin |digitalpin %pin"  group="循迹传感器"
+    //% blockId=sensor_tracking block="引脚 %pin 检测到黑线？"  group="循迹传感器"
     //% weight=74
     //% subcategory="传感器"
     //% inlineInputMode=inline
