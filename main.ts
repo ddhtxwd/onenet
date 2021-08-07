@@ -9,46 +9,46 @@
  */
  
 enum PingUnit {
-    //% block="cm"
+    //% block="厘米"
     Centimeters,
-    //% block="inches"
+    //% block="英寸"
     Inches
 }
 
 enum RgbColors {
-    //% block=red
+    //% block="红"
     Red = 0xFF0000,
-    //% block=orange
+    //% block="橙"
     Orange = 0xFFA500,
-    //% block=yellow
+    //% block="黄"
     Yellow = 0xFFFF00,
-    //% block=green
+    //% block="绿"
     Green = 0x00FF00,
-    //% block=blue
+    //% block="蓝"
     Blue = 0x0000FF,
-    //% block=indigo
+    //% block="靛"
     Indigo = 0x4b0082,
-    //% block=violet
+    //% block="紫罗兰"
     Violet = 0x8a2be2,
-    //% block=purple
+    //% block="紫"
     Purple = 0xFF00FF,
-    //% block=white
+    //% block="白"
     White = 0xFFFFFF,
-    //% block=black
+    //% block="黑"
     Black = 0x000000
 }
 
 enum RgbUltrasonics {
-    //% block=left
+    //% block="左"
     Left = 0x00,
-    //% block=right
+    //% block="右"
     Right = 0x01,
-    //% block=all
+    //% block="全部"
     All = 0x02
 }
 
 enum ColorEffect {
-    //% block=none
+    //% block="无"
     None = 0x00,
     //% block=breathing
     Breathing = 0x01,
@@ -68,9 +68,9 @@ enum rgb_ColorEffect {
 }
 
 enum DHT11Type {
-    //% block="temperature(℃)" 
+    //% block="温度(℃)" 
     DHT11_temperature_C = 0,
-    //% block="humidity(0~100)"
+    //% block="湿度(0~100)"
     DHT11_humidity = 1,
 }
 
@@ -518,7 +518,7 @@ namespace OneNET {
         }
     }
 	
-	    //% blockId=sensor_water block="Water vapor sensor pin %pines"  group="水蒸气传感器"
+	//% blockId=sensor_water block="水蒸气 引脚 %pines 读取值"  group="水蒸气传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -528,7 +528,7 @@ namespace OneNET {
     }
 
 
-    //% blockId=sensor_temperature block="Pin %pin reads the analog value of the LM35"  group="LM35温度传感器"
+    //% blockId=sensor_temperature block="引脚%pin获取环境温度"  group="LM35温度传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -538,7 +538,7 @@ namespace OneNET {
 
     }
 
-    //% blockId=sensor_flame block="Pin %pin reads the digital value of the flame sensor" group="火焰传感器"
+    //% blockId=sensor_flame block="引脚%pin检测到火焰？" group="火焰传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -551,7 +551,7 @@ namespace OneNET {
         }
     }
 
-    //% blockId=sensor_flame_analog block="Pin %pin reads the analog value of the flame sensor" group="火焰传感器"
+    //% blockId=sensor_flame_analog block="引脚%pin读取火焰的模拟值" group="火焰传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -559,7 +559,7 @@ namespace OneNET {
         return pins.analogReadPin(pin)
     }
 
-    //% blockId=sensor_infraredTracking block="Pin %pin reads the digital value of the infraredTracking sensor" group="红外寻迹传感器"
+    //% blockId=sensor_infraredTracking block="引脚%pin检测到黑线？" group="红外寻迹传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -572,7 +572,7 @@ namespace OneNET {
         }
     }
 
-    //% blockId=sensor_incline block="sensor_incline pin |digitalpin %pin" group="倾斜传感器"
+    //% blockId=sensor_incline block="引脚%pin检测到倾斜？" group="倾斜传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -591,7 +591,7 @@ namespace OneNET {
      * 光敏传感器
      */
 
-    //% blockId=sensor_illumination block="sensor_illumination pin |analogpin %pin" group="光敏传感器"
+    //% blockId=sensor_illumination block="引脚%pin获取光照强度模拟值" group="光敏传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -603,7 +603,7 @@ namespace OneNET {
      * 热敏传感器
      */
 
-    //% blockId=sensor_thermosensitive block="sensor_thermosensitive pin |analogpin %pin" group="热敏传感器"
+    //% blockId=sensor_thermosensitive block="引脚%pin获取热度模拟值" group="热敏传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -615,7 +615,7 @@ namespace OneNET {
      * 水位传感器
      */
 
-    //% blockId=sensor_waterLevel block="sensor_waterLevel pin |analogpin %pin" group="水位传感器"
+    //% blockId=sensor_waterLevel block="引脚%pin获取水位模拟值" group="水位传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -627,7 +627,7 @@ namespace OneNET {
      * 土壤湿度传感器
      */
 
-    //% blockId=sensor_soilMoisture block="sensor_soilMoisture pin |analogpin %pin"  group="土壤湿度传感器"
+    //% blockId=sensor_soilMoisture block="引脚%pin获取湿度模拟值"  group="土壤湿度传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -639,7 +639,7 @@ namespace OneNET {
      * 避障传感器
      */
 
-    //% blockId=sensor_obstacleAvoid block="sensor_obstacleAvoid pin |digitalpin %pin" group="避障传感器"
+    //% blockId=sensor_obstacleAvoid block="引脚%pin检测到前方有障碍物？" group="避障传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -657,7 +657,7 @@ namespace OneNET {
      * 磁簧开关传感器
      */
 
-    //% blockId=sensor_reedSwitch block="sensor_reedSwitch pin |digitalpin %pin" group="磁簧开关传感器"
+    //% blockId=sensor_reedSwitch block="引脚%pin检测到磁场？" group="磁簧开关传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -674,7 +674,7 @@ namespace OneNET {
      * 人体热释电传感器
      */
 
-    //% blockId=sensor_humanBody block="sensor_humanBody pin |digitalpin %pin" group="人体热释电传感器"
+    //% blockId=sensor_humanBody block="引脚%pin检测到人体热源？" group="人体热释电传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -691,7 +691,7 @@ namespace OneNET {
      * 震动传感器
      */
 
-    //% blockId=sensor_quake block="sensor_quake pin |digitalpin %pin" group="震动传感器"
+    //% blockId=sensor_quake block="引脚%pin检测到震动？" group="震动传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -708,7 +708,7 @@ namespace OneNET {
      * 震动传感器
      */
 
-    //% blockId=sensor_quake_analog block="sensor_quake pin |digitalpin %pin" group="震动传感器"
+    //% blockId=sensor_quake_analog block="引脚%pin获取震动模拟值" group="震动传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -720,7 +720,7 @@ namespace OneNET {
      * 灰度传感器
      */
 
-    //% blockId=sensor_grayLevel block="sensor_grayLevel pin |analogpin %pin" group="灰度传感器"
+    //% blockId=sensor_grayLevel block="引脚%pin获取颜色模拟值" group="灰度传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -731,7 +731,7 @@ namespace OneNET {
     /**
      * 声音传感器
      */
-    //% blockId=sensor_sound_analogread  block="Pin %pin reads the analog value of the sound sensor" group="声音传感器"
+    //% blockId=sensor_sound_analogread  block="引脚%AS获取声音的模拟值" group="声音传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -740,7 +740,7 @@ namespace OneNET {
 
     }
 
-    //% blockId=sensor_sound_digitalread  block="Pin %pin reads the digital value of the sound sensor" group="声音传感器"
+    //% blockId=sensor_sound_digitalread  block="引脚%DS检测到声音？" group="声音传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -756,7 +756,7 @@ namespace OneNET {
     /**
      * 雨滴传感器
      */
-    //% blockId=sensor_rain_analogread  block="Pin %pin reads the analog value of the rain sensor"  group="雨滴传感器"
+    //% blockId=sensor_rain_analogread  block="引脚%AR获取雨滴的模拟值"  group="雨滴传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -764,7 +764,7 @@ namespace OneNET {
         return pins.analogReadPin(_DR)
     }
 
-    //% blockId=sensor_rain_digitalread  block="Pin %pin reads the digital value of the rain sensor"   group="雨滴传感器"
+    //% blockId=sensor_rain_digitalread  block="引脚%DR雨滴传感器检测到雨滴?"   group="雨滴传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -780,7 +780,7 @@ namespace OneNET {
     /**
      * 气体传感器
      */
-    //% blockId=sensor_gas_analogread  block="Pin %pin reads the analog value of the MQ4-gas sensor"  group="气体传感器"
+    //% blockId=sensor_gas_analogread  block="引脚%AG获取到气体的模拟值"  group="气体传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -788,7 +788,7 @@ namespace OneNET {
         return pins.analogReadPin(_AG)
     }
 
-    //% blockId=sensor_gas_digitalread  block="Pin %pin reads the digital value of the MQ4-gas sensor"  group="气体传感器"
+    //% blockId=sensor_gas_digitalread  block="引脚%DG检测到气体？"  group="气体传感器"
     //% weight=70
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -812,7 +812,7 @@ namespace OneNET {
      * Get RUS04 distance
      * @param pin Microbit ultrasonic pin; eg: P2
     */
-    //% blockId=Ultrasonic block="Read RgbUltrasonic Distance at pin %pin(cm)"  group="RGB超声波"
+    //% blockId=Ultrasonic block="引脚%pin读取RGB超声波距离(cm)"  group="RGB超声波"
     //% weight=76
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -1026,7 +1026,7 @@ namespace OneNET {
         }
 }
 
-    //% blockId="sensorbit_rus04" block="part %index show color %rgb effect %effect rgbpin %pin"  group="RGB超声波"
+    //% blockId="sensorbit_rus04" block="引脚%pin 探头 %index 颜色 %rgb 效果 %effect"  group="RGB超声波"
     //% weight=75
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -1041,7 +1041,7 @@ namespace OneNET {
      * @param unit desired conversion unit
      * @param maxCmDistance maximum distance in centimeters (default is 500)
      */
-    //% blockId="sensor_ping" block="ping trig %trig|echo %echo|unit %unit" group="普通超声波"
+    //% blockId="sensor_ping" block="普通超声波trig %trig |echo %echo 获取距离|单位 %unit" group="普通超声波"
     //% weight=75
     //% inlineInputMode=inline
     //% subcategory="传感器"
@@ -1064,7 +1064,7 @@ namespace OneNET {
         }
     }
 
-    //% blockId="readdht11" block="value of dht11 %dht11type at pin %dht11pin"  group="温湿度传感器"
+    //% blockId="readdht11" block="引脚 %dht11pin 获取温湿度传感器的 %dht11type"  group="温湿度传感器"
     //% subcategory="传感器"
     //% inlineInputMode=inline
     export function dht11value(dht11pin: DigitalPin, dht11type: DHT11Type): number {
@@ -1142,7 +1142,7 @@ namespace OneNET {
       /**
        * 四路循迹传感器初始化
        */
-      //% blockId=four_sensor_tracking block="four_sensor_tracking pin1 |digitalpin %pin1 pin2 |digitalpin %pin2 |pin3 |digitalpin %pin3 |pin4 |digitalpin %pin4"  group="循迹传感器"
+      //% blockId=four_sensor_tracking block="四路循迹初始化引脚OUT0|%pin1|引脚OUT1|%pin2|引脚OUT2|%pin3|引脚OUT3|%pin4"  group="循迹传感器"
       //% inlineInputMode=inline
       //% weight=73
       //% subcategory="传感器"
@@ -1153,7 +1153,7 @@ namespace OneNET {
         outPin4 = pin4;
       }
       
-      //% blockId=four_sensor_trackingValue block="four_sensor_tracking get sensor value"  group="循迹传感器"
+      //% blockId=four_sensor_trackingValue block="四路循迹传感器获取的值"  group="循迹传感器"
       //% inlineInputMode=inline
       //% weight=72
       //% subcategory="传感器"
@@ -1186,7 +1186,7 @@ namespace OneNET {
         return result;
       }
 
-    //% blockId="dht11value_v2" block="value of dht11 %dht11type at pin %dht11pin"  group="温湿度传感器"
+    //% blockId="dht11value_v2" block="引脚 %dht11pin 获取温湿度传感器的 %dht11type"  group="温湿度传感器"
     //% subcategory="micro:bit(V2)"
     //% inlineInputMode=inline
     export function dht11value_v2(dht11pin: DigitalPin, dht11type: DHT11Type): number {
