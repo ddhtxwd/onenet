@@ -11,12 +11,12 @@
     "files": [
         "README.md",
         "main.ts",
-		"EMRGBLight.ts",
-		"sensors-strings.json"
+        "EMRGBLight.ts",
+		"_locales/zh/sensors-strings.json"
     ],
     "testFiles": [
         "test.ts"
     ],
-    "public": false,
+    "public": true,
     "preferredEditor": "tsprj"
 }
