@@ -75,7 +75,7 @@ enum DHT11Type {
 }
 
 
-//% weight=100 color=#0fbc11 icon="\uf1eb"
+//% weight=100 color=#0fbc11 icon="\uf1eb"  block="OneNET"
 namespace OneNET {
 
     let serial_read: string;
