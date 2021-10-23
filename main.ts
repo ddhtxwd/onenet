@@ -463,7 +463,56 @@ namespace OneNET {
             cmd((dat << 4) | 0x01)
         }
     }
-    
+    let _SDO = 0
+    let _SCL = 0
+
+    //% blockId=actuator_keyborad_pin block="actuator_keyborad_pin|SDOPIN %SDO|SCLPIN %SCL"   group="矩阵键盘模块"
+    //% weight=71
+    //% subcategory="键盘"
+    export function actuator_keyborad_pin(SDO: DigitalPin, SCL: DigitalPin): void {
+
+        _SDO = SDO
+        _SCL = SCL
+    }
+
+    //% blockId=actuator_keyborad_read block="actuator_keyborad_read"   group="矩阵键盘模块"
+    //% weight=70
+    //% subcategory="键盘"
+    export function actuator_keyborad_read(): string {
+        let DATA = 0
+        pins.digitalWritePin(_SDO, 1)
+        control.waitMicros(93)
+
+        pins.digitalWritePin(_SDO, 0)
+        control.waitMicros(10)
+
+        for (let i = 0; i < 16; i++) {
+            pins.digitalWritePin(_SCL, 1)
+            pins.digitalWritePin(_SCL, 0)
+            DATA |= pins.digitalReadPin(_SDO) << i
+        }
+        control.waitMicros(2 * 1000)
+// 	serial.writeString('' + DATA + '\n');
+        switch (DATA & 0xFFFF) {
+            case 0xFFFE: return "1"
+            case 0xFFFD: return "2"
+            case 0xFFFB: return "3"
+            case 0xFFEF: return "4"
+            case 0xFFDF: return "5"
+            case 0xFFBF: return "6"
+            case 0xFEFF: return "7"
+            case 0xFDFF: return "8"
+            case 0xFBFF: return "9"
+            case 0xDFFF: return "0"
+            case 0xFFF7: return "A"
+            case 0xFF7F: return "B"
+            case 0xF7FF: return "C"
+            case 0x7FFF: return "D"
+            case 0xEFFF: return "*"
+            case 0xBFFF: return "#"
+            default: return " "
+        }
+    }
 
     function signal_dht11(pin: DigitalPin): void {
         pins.digitalWritePin(pin, 0);
