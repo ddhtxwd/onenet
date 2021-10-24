@@ -466,7 +466,7 @@ namespace OneNET {
     let _SDO = 0
     let _SCL = 0
 
-    //% blockId=actuator_keyborad_pin block="actuator_keyborad_pin|SDOPIN %SDO|SCLPIN %SCL"   group="矩阵键盘模块"
+    //% blockId=actuator_keyborad_pin block="设置矩阵键盘引脚SDO: %SDO SCL: %SCL"   group="矩阵键盘模块"
     //% weight=71
     //% subcategory="键盘"
     export function actuator_keyborad_pin(SDO: DigitalPin, SCL: DigitalPin): void {
@@ -475,7 +475,7 @@ namespace OneNET {
         _SCL = SCL
     }
 
-    //% blockId=actuator_keyborad_read block="actuator_keyborad_read"   group="矩阵键盘模块"
+    //% blockId=actuator_keyborad_read block="读取按键值"   group="矩阵键盘模块"
     //% weight=70
     //% subcategory="键盘"
     export function actuator_keyborad_read(): string {
