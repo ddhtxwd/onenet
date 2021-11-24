@@ -8,7 +8,7 @@
  * 自定义图形块
  */
  
-enum PingUnit {
+enum UltrasonicsUnit {
     //% block="厘米"
     Centimeters,
     //% block="英寸"
@@ -1094,7 +1094,7 @@ namespace OneNET {
     //% weight=75
     //% inlineInputMode=inline
     //% subcategory="传感器"
-    export function ping(trig: DigitalPin, echo: DigitalPin, unit: PingUnit, maxCmDistance = 500): number {
+    export function ping(trig: DigitalPin, echo: DigitalPin, unit: UltrasonicsUnit, maxCmDistance = 500): number {
         // send pulse
         pins.setPull(trig, PinPullMode.PullNone);
         pins.digitalWritePin(trig, 0);
@@ -1107,8 +1107,8 @@ namespace OneNET {
         const d = pins.pulseIn(echo, PulseValue.High, maxCmDistance * 58);
 
         switch (unit) {
-            case PingUnit.Centimeters: return Math.idiv(d, 58);
-            case PingUnit.Inches: return Math.idiv(d, 148);
+            case UltrasonicsUnit.Centimeters: return Math.idiv(d, 58);
+            case UltrasonicsUnit.Inches: return Math.idiv(d, 148);
             default: return d;
         }
     }
