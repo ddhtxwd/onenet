@@ -75,7 +75,7 @@ enum DHT11Type {
 }
 
 
-//% weight=100 color=#0fbc11 icon="\uf1eb"  block="OneNET"
+//% weight=100 color=#0fbc11 icon="\uf1eb"  block="物教IOT"
 namespace OneNET {
 
     let serial_read: string;
@@ -118,7 +118,7 @@ namespace OneNET {
         }
     })
 
-    //% block="连接到服务器成功"
+    //% block="连接到物联网成功"
     //% subcategory="联网"
     export function is_connected(): boolean {
         return is_mqtt_conneted;
@@ -168,7 +168,7 @@ namespace OneNET {
      * OneNET连接成功
      * @param handler MQTT connected callback
     */
-    //% block="OneNET连接成功"
+    //% block="物联网连接成功"
     //% subcategory="联网"
     export function on_mqtt_connected(handler: () => void): void {
         mqtt_conneted = handler;
@@ -194,7 +194,7 @@ namespace OneNET {
      * @param data_id ; eg: "temp"
      * @param data_value ; eg: "28.5"
     */
-    //% block="向OneNET发送信息 数据流名称：$data_id 内容：$data_value"
+    //% block="向物联网发送信息 数据流名称：$data_id 内容：$data_value"
     //% subcategory="联网"
     export function OneNET_send(data_id: string, data_value: string): void {
         if(is_mqtt_conneted==false)return;
@@ -208,7 +208,7 @@ namespace OneNET {
      * @param machine_id ; eg: "123456789"
      * @param pass ; eg: "1234"
     */
-    //% block="连接OneNET 产品ID：$product_id 设备ID：$machine_id 鉴权信息：$pass"
+    //% block="连接物联网 产品ID：$product_id 设备ID：$machine_id 鉴权信息：$pass"
     //% subcategory="联网"
     export function OneNET_connect(product_id: string, machine_id: string, pass: string): void {
         is_mqtt_conneted = false
