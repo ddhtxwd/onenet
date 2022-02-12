@@ -155,7 +155,7 @@ namespace OneNET {
     }
 
     /**
-     * On 收到OneNET的命令
+     * On 收到物联网的命令
      * @param handler MQTT receiveed callback
     */
     //% block="当收到命令时"
@@ -165,7 +165,7 @@ namespace OneNET {
     }
     
     /**
-     * OneNET连接成功
+     * 物联网连接成功
      * @param handler MQTT connected callback
     */
     //% block="物联网连接成功"
@@ -190,7 +190,7 @@ namespace OneNET {
         return receive_value;
     }
     /**
-     * 向OneNET发送信息
+     * 向物联网发送信息
      * @param data_id ; eg: "temp"
      * @param data_value ; eg: "28.5"
     */
@@ -203,7 +203,7 @@ namespace OneNET {
         basic.pause(100)
     }
     /**
-     * 连接OneNET
+     * 连接物联网
      * @param product_id ; eg: "123456"
      * @param machine_id ; eg: "123456789"
      * @param pass ; eg: "1234"
