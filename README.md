@@ -1,6 +1,6 @@
-# OneNET
+# 物教IoT
 
-OneNET iOT by XMU
+物教 IoT
 MQTT
 ## TODO
 
