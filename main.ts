@@ -118,7 +118,7 @@ namespace OneNET {
         }
     })
 
-    //% block="连接到物联网成功"
+    //% block="连接到云平台成功"
     //% subcategory="联网"
     export function is_connected(): boolean {
         return is_mqtt_conneted;
@@ -155,7 +155,7 @@ namespace OneNET {
     }
 
     /**
-     * On 收到物联网的命令
+     * On 收到云平台的命令
      * @param handler MQTT receiveed callback
     */
     //% block="当收到命令时"
@@ -165,10 +165,10 @@ namespace OneNET {
     }
     
     /**
-     * 物联网连接成功
+     * 云平台连接成功
      * @param handler MQTT connected callback
     */
-    //% block="物联网连接成功"
+    //% block="云平台连接成功"
     //% subcategory="联网"
     export function on_mqtt_connected(handler: () => void): void {
         mqtt_conneted = handler;
@@ -190,11 +190,11 @@ namespace OneNET {
         return receive_value;
     }
     /**
-     * 向物联网发送信息
+     * 向云平台发送信息
      * @param data_id ; eg: "temp"
      * @param data_value ; eg: "28.5"
     */
-    //% block="向物联网发送信息 数据流名称：$data_id 内容：$data_value"
+    //% block="向云平台发送信息 数据流名称：$data_id 内容：$data_value"
     //% subcategory="联网"
     export function OneNET_send(data_id: string, data_value: string): void {
         if(is_mqtt_conneted==false)return;
@@ -203,12 +203,12 @@ namespace OneNET {
         basic.pause(100)
     }
     /**
-     * 连接物联网
+     * 连接云平台
      * @param product_id ; eg: "123456"
      * @param machine_id ; eg: "123456789"
      * @param pass ; eg: "1234"
     */
-    //% block="连接物联网 产品ID：$product_id 设备ID：$machine_id 鉴权信息：$pass"
+    //% block="连接云平台 产品ID：$product_id 设备ID：$machine_id 鉴权信息：$pass"
     //% subcategory="联网"
     export function OneNET_connect(product_id: string, machine_id: string, pass: string): void {
         is_mqtt_conneted = false
