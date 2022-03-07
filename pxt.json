@@ -1,7 +1,7 @@
 {
-    "name": "OneNET",
+    "name": "物教IoT",
     "version": "0.0.0",
-    "description": "OneNET iOT by XMU",
+    "description": "物教 iOT by XMU",
     "license": "MIT",
     "dependencies": {
         "core": "*",
